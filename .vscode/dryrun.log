@@ -1,0 +1,5 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/xinhao/projects/Ascenseur'
+make: 'main.o' is up to date.
+make: Leaving directory '/home/xinhao/projects/Ascenseur'
+ 
