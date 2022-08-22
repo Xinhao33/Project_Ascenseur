@@ -1,5 +1,5 @@
-make --dry-run --keep-going --print-directory
-make: Entering directory '/home/xinhao/projects/Ascenseur'
-make: 'main.o' is up to date.
-make: Leaving directory '/home/xinhao/projects/Ascenseur'
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/xinhao/projects/Project_Ascenseur'
+gcc -c main.c elevator.c person.c
+make: Leaving directory '/home/xinhao/projects/Project_Ascenseur'
  

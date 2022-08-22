@@ -18,4 +18,12 @@ PersonList* insert(Person *p, PersonList *list)
     PersonList *res = malloc(sizeof(PersonList));
     res -> person = p;
     res -> next = list; 
+    
+    return res; 
 }
+
+
+ 
+
+
+    

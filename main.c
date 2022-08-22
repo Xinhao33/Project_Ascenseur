@@ -56,11 +56,9 @@ void DisplayBuilding(WINDOW *win, Building *b) {
   }
 }
 
-    void stepElevator(Building *b)
-    {
-        
-    }
-
+void stepElevator(Building *b){
+  
+};
 
 int main() {
   srand(time(NULL));   // should only be called once
