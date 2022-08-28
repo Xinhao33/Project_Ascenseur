@@ -57,7 +57,20 @@ void DisplayBuilding(WINDOW *win, Building *b) {
 }
 
 void stepElevator(Building *b){
-  
+    PersonList* output = NULL;
+    if (b -> elevator -> currentFloor == b -> elevator -> targetFloor){
+        output = exitElevator(b -> elevator);
+        (b -> waitingLists)[b -> elevator -> currentFloor] = enterElevator(b -> elevator, (b -> waitingLists)[b -> elevator -> currentFloor]);
+
+    }
+
+    else if (b -> elevator -> currentFloor <= b -> elevator -> targetFloor){
+            b -> elevator -> currentFloor += 1;
+        }
+    else {
+            b -> elevator -> currentFloor -= 1;
+        }
+    
 };
 
 int main() {

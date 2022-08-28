@@ -1,4 +1,7 @@
-#include "elevator.h" 
+#include "elevator.h"
+#include "person.h"
+#include <stddef.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 Elevator* create_elevator(int capacity, int currentFloor, PersonList *persons)
@@ -23,44 +26,52 @@ Building* create_building(int nbFloor, Elevator *elevator, PersonList **waitingL
     return res;
 }
 
+int len_perlist(PersonList* p){
+    PersonList* actuel = p;
+    int len = 0;
+    while (actuel != NULL) {
+        len += 1;
+        actuel = actuel -> next;
+    }
+    return len;
+}
+
 
 PersonList* exitElevator(Elevator *e){
     PersonList* actuel = e -> persons;
     PersonList* res = NULL;
-    PersonList* remain = NULL;
-    int destination = actuel ->person ->dest;
-    int currentFloor = e ->currentFloor; 
+    PersonList* rest = NULL;
+
+
     while (actuel != NULL) {
-        if (destination == currentFloor){
+        if (actuel -> person -> dest == e-> currentFloor){
             res = insert(actuel -> person, res);
         }
         else {
-            remain = insert(actuel -> person, remain);
+            rest = insert(actuel -> person, rest);
         }
         actuel = actuel -> next;
     }
-    e -> persons = remain;
+    
+    while (rest != NULL) {
+        actuel = insert(rest -> person, actuel);
+        rest = rest -> next;
+    }
+    e -> persons = actuel;
     return res;
 };
 
-int len_perlist(PersonList *list){
-  int res = 0;
-  while(list != NULL){
-    res +=1;
-    list = list -> next;
-  }
-  return res;
-}
 
 PersonList* enterElevator(Elevator *e, PersonList *list){
     int pointeur = e -> capacity - len_perlist(e -> persons);
     while ((pointeur != 0) && (list != NULL)){
-        e -> persons = insert(list -> person, e -> persons);
+        e ->persons = insert(list -> person, e -> persons);
         pointeur -= 1;
         list = list -> next;
     }
     return list; 
 };
 
-void stepElevator(Building *b);
+
+
 

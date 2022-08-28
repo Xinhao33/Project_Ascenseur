@@ -1,6 +1,7 @@
-#include "person.h" 
+#include "person.h"
+#include <stddef.h>
+#include <stdio.h>
 #include <stdlib.h>
-
 
 Person* createPerson(int src, int destination)
 {
@@ -21,6 +22,8 @@ PersonList* insert(Person *p, PersonList *list)
     
     return res; 
 }
+
+
 
 
  
