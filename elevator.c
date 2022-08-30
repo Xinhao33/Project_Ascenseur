@@ -26,7 +26,7 @@ Building* create_building(int nbFloor, Elevator *elevator, PersonList **waitingL
     return res;
 }
 
-int len_perlist(PersonList* p){
+int len_personlist(PersonList* p){
     PersonList* actuel = p;
     int len = 0;
     while (actuel != NULL) {
@@ -63,7 +63,7 @@ PersonList* exitElevator(Elevator *e){
 
 
 PersonList* enterElevator(Elevator *e, PersonList *list){
-    int pointeur = e -> capacity - len_perlist(e -> persons);
+    int pointeur = e -> capacity - len_personlist(e -> persons);
     while ((pointeur != 0) && (list != NULL)){
         e ->persons = insert(list -> person, e -> persons);
         pointeur -= 1;
